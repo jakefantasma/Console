@@ -19,11 +19,15 @@ public:
     {
         SetConsoleTextAttribute(CMD_HANDLER, color);
     }
-    // main write log
+    //-----------------------------------------------------------------------
     void log(std::string msg) // string
     {
         std::cout << msg << std::endl;
         setColor(__default);
+    };
+    void log(float msg) // int
+    {
+        log(std::to_string(msg));
     };
     void log(int msg) // int
     {
@@ -34,12 +38,16 @@ public:
         std::string s(1, msg);
         log(s);
     };
-    // main write error
+    //-----------------------------------------------------------------------
     void error(std::string msg) // string
     {
         setColor(__error);
         log(msg);
     };
+    void error(float msg) // string
+    {
+        error(std::to_string(msg));
+    }
     void error(int msg) // string
     {
         error(std::to_string(msg));
@@ -49,20 +57,26 @@ public:
         std::string s(1, msg);
         error(s);
     }
+    //-----------------------------------------------------------------------
     void warning(std::string msg) // string
     {
         setColor(__warning);
         log(msg);
+    };
+    void warning(float msg) // int
+    {
+        warning(std::to_string(msg));
+    };
+    void warning(int msg) // int
+    {
+        warning(std::to_string(msg));
     };
     void warning(char msg) // char
     {
         std::string s(1, msg);
         warning(s);
     }
-    void warning(int msg) // int
-    {
-        warning(std::to_string(msg));
-    };
+
     // string
     ~IMP();
 };
