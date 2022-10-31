@@ -5,7 +5,7 @@
 #include <windows.h>
 
 HANDLE CMD_HANDLER = GetStdHandle(STD_OUTPUT_HANDLE);
-
+COORD CursorPosition;
 class IMP
 {
 private:
@@ -15,6 +15,13 @@ private:
 
 public:
     IMP(){};
+    void gotoxy(int x, int y)
+    {
+        CursorPosition.X = x;
+        CursorPosition.Y = y;
+        SetConsoleCursorPosition(CMD_HANDLER, CursorPosition);
+    }
+    //-----------------------------------------------------------------------
     void setColor(int color)
     {
         SetConsoleTextAttribute(CMD_HANDLER, color);
@@ -76,7 +83,6 @@ public:
         std::string s(1, msg);
         warning(s);
     }
-
     // string
     ~IMP();
 };
