@@ -84,7 +84,12 @@ public:
         warning(s);
     }
     // string
+
+    void setTitle(std::string title)
+    {
+        SetConsoleTitle(title.c_str());
+    }
     ~IMP();
 };
 
-IMP *Consola = new IMP();
+IMP *Console = new IMP();
