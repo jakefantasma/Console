@@ -6,4 +6,16 @@ Objeto consola el cual cuenta con metodos para el out stream
 - Warning
 
 
-los metodos ya cuentan con setcolor aplicado.-
+```C++
+
+#import "Console/Console.hpp"
+
+
+int main(){
+  Console->log("Mensaje de prueba");
+  Console->Error("Mensaje de error");
+  Console->Warning("Mensaje de alerta");
+  return 0;
+}
+
+```
