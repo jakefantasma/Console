@@ -5,11 +5,10 @@ int main()
     int r = 0;
     while (true)
     {
-        Consola->gotoxy(20, 10);
-        Consola->error(r);
-        Consola->gotoxy(20, 11);
-        Consola->warning("warning 1");
-
+        Console->gotoxy(20, 10);
+        Console->error(r);
+        Console->gotoxy(20, 11);
+        Console->warning("warning 1");
         r +=1;
         Sleep(100);
     }

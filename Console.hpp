@@ -3,7 +3,6 @@
 #include <conio.h>
 #include <string>
 #include <windows.h>
-
 HANDLE CMD_HANDLER = GetStdHandle(STD_OUTPUT_HANDLE);
 COORD CursorPosition;
 class IMP
@@ -21,70 +20,28 @@ public:
         CursorPosition.Y = y;
         SetConsoleCursorPosition(CMD_HANDLER, CursorPosition);
     }
-    //-----------------------------------------------------------------------
     void setColor(int color)
     {
         SetConsoleTextAttribute(CMD_HANDLER, color);
     }
-    //-----------------------------------------------------------------------
-    void log(std::string msg) // string
+    template <typename T>
+    void log(T msg) // string
     {
         std::cout << msg << std::endl;
         setColor(__default);
     };
-    void log(float msg) // int
-    {
-        log(std::to_string(msg));
-    };
-    void log(int msg) // int
-    {
-        log(std::to_string(msg));
-    };
-    void log(char msg) // char
-    {
-        std::string s(1, msg);
-        log(s);
-    };
-    //-----------------------------------------------------------------------
-    void error(std::string msg) // string
+    template <typename T>
+    void error(T msg) // string
     {
         setColor(__error);
         log(msg);
     };
-    void error(float msg) // string
-    {
-        error(std::to_string(msg));
-    }
-    void error(int msg) // string
-    {
-        error(std::to_string(msg));
-    }
-    void error(char msg) // char
-    {
-        std::string s(1, msg);
-        error(s);
-    }
-    //-----------------------------------------------------------------------
-    void warning(std::string msg) // string
+    template <typename T>
+    void warning(T msg) // string
     {
         setColor(__warning);
         log(msg);
     };
-    void warning(float msg) // int
-    {
-        warning(std::to_string(msg));
-    };
-    void warning(int msg) // int
-    {
-        warning(std::to_string(msg));
-    };
-    void warning(char msg) // char
-    {
-        std::string s(1, msg);
-        warning(s);
-    }
-    // string
-
     void setTitle(std::string title)
     {
         SetConsoleTitle(title.c_str());
